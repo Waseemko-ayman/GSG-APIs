@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/GSG-APIs/static/css/main.ed3d9830.css",
+    "main.js": "/GSG-APIs/static/js/main.2e37db45.js",
+    "index.html": "/GSG-APIs/index.html",
+    "main.ed3d9830.css.map": "/GSG-APIs/static/css/main.ed3d9830.css.map",
+    "main.2e37db45.js.map": "/GSG-APIs/static/js/main.2e37db45.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ed3d9830.css",
+    "static/js/main.2e37db45.js"
+  ]
+}

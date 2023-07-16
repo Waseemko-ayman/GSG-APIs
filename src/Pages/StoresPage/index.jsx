@@ -4,6 +4,7 @@ import { STORES_COLUMNS } from '../../Components/Constants/stores';
 import { Navigate } from 'react-router-dom';
 import { PATHS } from '../../Components/router/paths';
 import "./style.css"
+import axios from 'axios';
 
 class StoresPage extends Component {
   state = {
@@ -19,6 +20,11 @@ class StoresPage extends Component {
 
   handleDelete = (id) => {
     console.log(id, "is Delted")
+    try {
+      axios.delete(`https://some-data.onrender.com/stores/${id}`);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   handleEdit = (id) => {

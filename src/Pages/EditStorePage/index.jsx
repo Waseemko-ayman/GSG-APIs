@@ -16,10 +16,17 @@ class EditStorePage extends Component {
   
   id = this.props?.params?.id
 
-  componentDidMount() {
-    fetch(`https://some-data.onrender.com/stores/${this.id}`)
-      .then(response => response.json())
-      .then(data => this.setState({ store: data, isLoading: false }))
+  // By axios
+  async componentDidMount() { // Reqular Function علشان هيك حطيت الأسنك بالاول
+    try {
+      const { data } = await axios.get(`https://some-data.onrender.com/stores/${this.id}`)
+      this.setState({ store: data })
+    } catch (error) {
+      console.log(error.message)
+      this.setState({ error: error.message })
+    } finally {
+      this.setState({ isLoading: false })
+    }
   }
 
   handleEditStore = async (body) => {

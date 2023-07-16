@@ -12,10 +12,17 @@ class StoresPage extends Component {
     isLoading: true
   }
 
-  componentDidMount() {
-    fetch('https://some-data.onrender.com/stores')
-      .then(response => response.json())
-      .then(data => this.setState({ stores: data, isLoading: false }))
+  // By axios
+  async componentDidMount() { // Reqular Function علشان هيك حطيت الأسنك بالاول
+    try {
+      const { data } = await axios.get('https://some-data.onrender.com/stores')
+      this.setState({ stores: data })
+    } catch (error) {
+      console.log(error.message)
+      this.setState({ error: error.message })
+    } finally {
+      this.setState({ isLoading: false })
+    }
   }
 
   handleDelete = (id) => {

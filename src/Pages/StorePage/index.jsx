@@ -4,6 +4,7 @@ import { PATHS } from '../../Components/router/paths';
 import WithParams from '../../Components/WithParams';
 import Container from '../../Components/Container';
 import "./style.css"
+import axios from 'axios';
 
 class StorePage extends Component {
   state = {
@@ -18,10 +19,17 @@ class StorePage extends Component {
     this.setState({ isEditing: true })
   }
 
-  componentDidMount() {
-    fetch(`https://some-data.onrender.com/stores/${this.id}`)
-      .then(response => response.json())
-      .then(data => this.setState({ store: data, isLoading: false }))
+  // By axios
+  async componentDidMount() { // Reqular Function علشان هيك حطيت الأسنك بالاول
+    try {
+      const { data } = await axios.get(`https://some-data.onrender.com/stores/${this.id}`)
+      this.setState({ store: data })
+    } catch (error) {
+      console.log(error.message)
+      this.setState({ error: error.message })
+    } finally {
+      this.setState({ isLoading: false })
+    }
   }
 
   render() {

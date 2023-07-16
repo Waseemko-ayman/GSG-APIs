@@ -21,7 +21,9 @@ class StoresPage extends Component {
   handleDelete = (id) => {
     console.log(id, "is Delted")
     try {
-      axios.delete(`https://some-data.onrender.com/stores/${id}`);
+      axios.delete(`https://some-data.onrender.com/stores/${id}`)
+        .then((data) => data.data.id)
+        .then((id) => this.setState(prev => ({stores: [...prev.stores.filter(data => data.id !== id)]})))
     } catch (err) {
       console.log(err);
     }
